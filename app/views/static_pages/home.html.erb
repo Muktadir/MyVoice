@@ -1,0 +1,52 @@
+<% if signed_in? %>
+  <div class="row">
+    <aside class="span4">
+      <section>
+        <%= render 'shared/user_info' %>
+      </section>
+      <section>
+        <%= render 'shared/stats' %>
+      </section>
+      <section>
+        <%= render 'shared/micropost_form' %>
+      </section>
+    </aside>
+    <div class="span8">
+      <h3>Micropost Feed</h3>
+      <%= render 'shared/feed' %>
+    </div>
+  </div>
+<% else %>
+  <div class="center hero-unit">
+    <h1>Welcome to My Voice</h1>
+
+    <h2>
+      Make Noise!!!
+    </h2>
+    <br>
+    <br>
+    <br>
+
+    <div>
+      <div class="row">
+        <div class="span6 custom_offset">
+          <%= form_for(:session, url: sessions_path) do |f| %>
+
+              <!--<%= f.label :email %>-->
+              <%= f.text_field :email, :placeholder => "Your Email" %>
+
+              <!--<%= f.label :password %>-->
+              <%= f.password_field :password, :placeholder => "Password" %>
+
+              <%= f.submit "Sign in", class: "btn btn-large btn-primary" %>
+          <% end %>
+
+          <p>New in My Voice? <%= link_to "Sign Up now!", signup_path %></p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!--<%= link_to image_tag("rails.png", alt: "Rails"), 'http://rubyonrails.org/' %>-->
+<% end %>
